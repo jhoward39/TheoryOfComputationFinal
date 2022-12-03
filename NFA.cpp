@@ -15,21 +15,23 @@ string input = "";
 string state = "p";
 stack<char> s;
 int place = 0; // indicates the current place in the string
+int numa;
+int numb;
+int counter=0;
 
 void checkStates()
 {
-    cout << "input[place]: " << input[place] << " State: " << state;
+    cout<<"Step: "<< counter;
+    cout<< " State: " << state<< " Unread Input: " << input.substr(place,input.size()-place);
 
     if (!s.empty())
-        cout << " s.top(): " << s.top() << endl;
-    else
-        cout << endl;
+        cout << " Stack: " << s.top();
+
+    counter++;
 }
 
 int main()
 {
-    int numa;
-    int numb;
 
     cout<<"How many a's? ";
     cin>>numa; 
@@ -62,9 +64,9 @@ int main()
             state = "q";
             s.push('S');
 
-            cout << "rule 1";
-
             checkStates();
+            cout << " rule 1"<<endl;
+
         }
 
         // Rule 2
@@ -72,10 +74,11 @@ int main()
         {
             state = "qa";
             place++;
-
-            cout << "rule 2";
-
+            
             checkStates();
+
+            cout << " rule 2"<<endl;
+
         }
 
         // Rule 3
@@ -84,9 +87,10 @@ int main()
             state = "q";
             s.pop();
 
-            cout << "rule 3";
-
             checkStates();
+
+            cout << " rule 3"<<endl;
+
         }
 
         // Rule 4
@@ -95,9 +99,10 @@ int main()
             state = "qb";
             place++;
 
-            cout << "rule 4";
-
             checkStates();
+
+            cout << " rule 4"<<endl;
+
         }
 
         // Rule 5
@@ -106,9 +111,10 @@ int main()
             state = "q";
             s.pop();
 
-            cout << "rule 5";
-
             checkStates();
+
+            cout << " rule 5"<<endl;
+
         }
 
         // Rule 6
@@ -116,9 +122,10 @@ int main()
         {
             state = "q$";
 
-            cout << "rule 6";
-
             checkStates();
+
+            cout << " rule 6"<<endl;
+            
         }
 
         // Rule 7
@@ -130,9 +137,10 @@ int main()
             s.push('S');
             s.push('a');
 
-            cout << "rule 7";
-
             checkStates();
+
+            cout << " rule 7"<<endl;
+
         }
 
         // Rule 8
@@ -140,16 +148,11 @@ int main()
         {
             s.pop();
 
-            cout << "rule 8";
             checkStates();
+
+            cout << " rule 8"<<endl;
         }
 
-        // Rule 9
-        else if ((input[place] == 'b') && (s.top()))
-        {
-            cout << "hello scum" << endl;
-            return 0;
-        }
 
         else // No rules can be followed
         {
