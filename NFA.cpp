@@ -1,4 +1,5 @@
-// Program to detect if a string is in the language (a^nb^n)
+/*Program to detect if a string is in the language (a^nb^n)
+    Created by Joseph Denham and Joseph Howard for CISC4090 */
 
 #include <iostream>
 #include <stack>
@@ -27,13 +28,23 @@ void checkStates()
 
 int main()
 {
+    int numa;
+    int numb;
+
+    cout<<"How many a's? ";
+    cin>>numa; 
+    cout<<endl<<"How many b's?";
+    cin>> numb;
+    cout<<endl;
+    
+
     string str = "";
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < numa; i++)
     {
         str += "a";
     }
 
-    for (int j = 0; j < 5; j++)
+    for (int j = 0; j < numb; j++)
     {
         str += "b";
     }
@@ -133,12 +144,12 @@ int main()
             checkStates();
         }
 
-        // // Rule 9
-        // else if ((input[place] == 'b') && (s.top()))
-        // {
-        //     cout << "hello scum" << endl;
-        //     return 0;
-        // }
+        // Rule 9
+        else if ((input[place] == 'b') && (s.top()))
+        {
+            cout << "hello scum" << endl;
+            return 0;
+        }
 
         else // No rules can be followed
         {
