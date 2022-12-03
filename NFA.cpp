@@ -1,4 +1,4 @@
-// Program to detect if a string is in the language a^nb^n
+// Program to detect if a string is in the language (a^nb^n)
 
 #include <iostream>
 #include <stack>
@@ -28,12 +28,12 @@ void checkStates()
 int main()
 {
     string str = "";
-    for (int i = 0; i < 2049; i++)
+    for (int i = 0; i < 5; i++)
     {
         str += "a";
     }
 
-    for (int j = 0; j < 2049; j++)
+    for (int j = 0; j < 5; j++)
     {
         str += "b";
     }
@@ -134,9 +134,10 @@ int main()
         }
 
         // // Rule 9
-        // else if ((input[place] == 'b') && (s.top() == 'b'))
+        // else if ((input[place] == 'b') && (s.top()))
         // {
         //     cout << "hello scum" << endl;
+        //     return 0;
         // }
 
         else // No rules can be followed
@@ -159,7 +160,7 @@ int main()
 
     time_taken *= 1e-9;
 
-    cout << "Time taken by program is : " << fixed
+    cout << "Time taken by program is: " << fixed
          << time_taken << setprecision(9);
     cout << " sec" << endl;
 
