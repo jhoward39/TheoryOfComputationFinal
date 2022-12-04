@@ -25,6 +25,8 @@ void checkStates()
 
     if (!s.empty())
         cout << " Stack: " << s.top();
+    else
+        cout << " Stack: e";
 
     counter++;
 }
@@ -32,7 +34,7 @@ void checkStates()
 int main()
 {
 
-    cout << "For the language (a^n b^n) what would you like to be n?";
+    cout << "For (a^n b^n) what would you like to be n? ";
     cin >> num;
     cout << endl;
 
@@ -51,6 +53,8 @@ int main()
     input = str;
     auto start = chrono::high_resolution_clock::now();
 
+    checkStates();
+    cout << endl;
     while (state != "q$")
     {
 
@@ -117,6 +121,15 @@ int main()
 
             cout << " rule 6" << endl;
         }
+        // rule 6.5
+        else if (state == "q$" && s.empty())
+        {
+            place++;
+
+            checkStates();
+
+            cout << "rule 6.5";
+        }
 
         // Rule 7
         else if ((state == "qa") && (s.top() == 'S'))
@@ -150,7 +163,8 @@ int main()
             return 0;
         }
     }
-    if (s.empty())
+
+    if (s.empty() || s.top() == 'S')
         cout << input << " is in the language" << endl;
     else
         cout << input << " is not in the language" << endl;
