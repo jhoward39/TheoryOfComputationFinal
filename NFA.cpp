@@ -15,14 +15,13 @@ string input = "";
 string state = "p";
 stack<char> s;
 int place = 0; // indicates the current place in the string
-int numa;
-int numb;
-int counter=0;
+int num;
+int counter = 0;
 
 void checkStates()
 {
-    cout<<"Step: "<< counter;
-    cout<< " State: " << state<< " Unread Input: " << input.substr(place,input.size()-place);
+    cout << "Step: " << counter;
+    cout << " State: " << state << " Unread Input: " << input.substr(place, input.size() - place);
 
     if (!s.empty())
         cout << " Stack: " << s.top();
@@ -33,20 +32,17 @@ void checkStates()
 int main()
 {
 
-    cout<<"How many a's? ";
-    cin>>numa; 
-    cout<<endl<<"How many b's?";
-    cin>> numb;
-    cout<<endl;
-    
+    cout << "For the language (a^n b^n) what would you like to be n?";
+    cin >> num;
+    cout << endl;
 
     string str = "";
-    for (int i = 0; i < numa; i++)
+    for (int i = 0; i < num; i++)
     {
         str += "a";
     }
 
-    for (int j = 0; j < numb; j++)
+    for (int j = 0; j < num; j++)
     {
         str += "b";
     }
@@ -65,8 +61,7 @@ int main()
             s.push('S');
 
             checkStates();
-            cout << " rule 1"<<endl;
-
+            cout << " rule 1" << endl;
         }
 
         // Rule 2
@@ -74,11 +69,10 @@ int main()
         {
             state = "qa";
             place++;
-            
+
             checkStates();
 
-            cout << " rule 2"<<endl;
-
+            cout << " rule 2" << endl;
         }
 
         // Rule 3
@@ -89,8 +83,7 @@ int main()
 
             checkStates();
 
-            cout << " rule 3"<<endl;
-
+            cout << " rule 3" << endl;
         }
 
         // Rule 4
@@ -101,8 +94,7 @@ int main()
 
             checkStates();
 
-            cout << " rule 4"<<endl;
-
+            cout << " rule 4" << endl;
         }
 
         // Rule 5
@@ -113,8 +105,7 @@ int main()
 
             checkStates();
 
-            cout << " rule 5"<<endl;
-
+            cout << " rule 5" << endl;
         }
 
         // Rule 6
@@ -124,8 +115,7 @@ int main()
 
             checkStates();
 
-            cout << " rule 6"<<endl;
-            
+            cout << " rule 6" << endl;
         }
 
         // Rule 7
@@ -139,8 +129,7 @@ int main()
 
             checkStates();
 
-            cout << " rule 7"<<endl;
-
+            cout << " rule 7" << endl;
         }
 
         // Rule 8
@@ -150,9 +139,8 @@ int main()
 
             checkStates();
 
-            cout << " rule 8"<<endl;
+            cout << " rule 8" << endl;
         }
-
 
         else // No rules can be followed
         {
