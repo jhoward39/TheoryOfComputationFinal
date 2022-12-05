@@ -15,7 +15,8 @@ string input = "";
 string state = "p";
 stack<char> s;
 int place = 0; // indicates the current place in the string
-int num;
+int numa;
+int numb;
 int counter = 0;
 
 void checkStates()
@@ -25,8 +26,6 @@ void checkStates()
 
     if (!s.empty())
         cout << " Stack: " << s.top();
-    else
-        cout << " Stack: e";
 
     counter++;
 }
@@ -34,17 +33,20 @@ void checkStates()
 int main()
 {
 
-    cout << "For (a^n b^n) what would you like to be n? ";
-    cin >> num;
+    cout << "How many a's? ";
+    cin >> numa;
+    cout << endl
+         << "How many b's?";
+    cin >> numb;
     cout << endl;
 
     string str = "";
-    for (int i = 0; i < num; i++)
+    for (int i = 0; i < numa; i++)
     {
         str += "a";
     }
 
-    for (int j = 0; j < num; j++)
+    for (int j = 0; j < numb; j++)
     {
         str += "b";
     }
@@ -53,8 +55,6 @@ int main()
     input = str;
     auto start = chrono::high_resolution_clock::now();
 
-    checkStates();
-    cout << endl;
     while (state != "q$")
     {
 
@@ -155,8 +155,26 @@ int main()
         }
     }
 
-    if (s.empty() || s.top() == 'S')
+    // rule 9
+    if (s.empty())
+    {
         cout << input << " is in the language" << endl;
+    }
+    // rule 10
+    else if (s.top() == 'S')
+    {
+        s.pop();
+
+        checkStates();
+
+        cout << " rule 10 " << endl;
+
+        if (s.empty())
+        {
+            cout << input << " is in the language" << endl;
+        }
+    }
+
     else
         cout << input << " is not in the language" << endl;
 
