@@ -121,15 +121,6 @@ int main()
 
             cout << " rule 6" << endl;
         }
-        // rule 6.5
-        else if (state == "q$" && s.empty())
-        {
-            place++;
-
-            checkStates();
-
-            cout << "rule 6.5";
-        }
 
         // Rule 7
         else if ((state == "qa") && (s.top() == 'S'))
