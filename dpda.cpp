@@ -1,5 +1,11 @@
 /*Program to detect if a string is in the language (a^nb^n)
-    Created by Joseph Denham and Joseph Howard for CISC4090 */
+    Created by Joseph Denham and Joseph Howard for CISC4090
+
+This program acts as a push down automata that will recognize if a string is in the language L = a^nb^n.
+Input: The user will be prompted to give a string.
+Output: For each rule used by the push down automata, the step number, state, unread input, stack, and rule used will be printed to the terminal.
+At the end of the program, a statement about whether or not the string is in L gets printed to the terminal
+*/
 
 #include <iostream>
 #include <stack>
@@ -9,16 +15,14 @@
 
 using namespace std;
 
-// load 2048 a's to the string
-
 string input = "";
-string state = "p";
+string state = "p"; // initial state p
 stack<char> s;
 int place = 0; // indicates the current place in the string
-int numa;
-int numb;
+string str;
 int counter = 0;
 
+/*This outputs the state, unread string, and top of stack*/
 void checkStates()
 {
     cout << "Step: " << counter;
@@ -33,29 +37,14 @@ void checkStates()
 int main()
 {
 
-    cout << "How many a's? ";
-    cin >> numa;
-    cout << endl
-         << "How many b's?";
-    cin >> numb;
+    cout << "string? ";
+    cin >> str;
     cout << endl;
-
-    string str = "";
-    for (int i = 0; i < numa; i++)
-    {
-        str += "a";
-    }
-
-    for (int j = 0; j < numb; j++)
-    {
-        str += "b";
-    }
-    str += "$";
 
     input = str;
     auto start = chrono::high_resolution_clock::now();
 
-    while (state != "q$")
+    while (state != "q$") // continue while loop until state is q$
     {
 
         // Rule 1
@@ -133,7 +122,8 @@ int main()
 
             checkStates();
 
-            cout << " rule 7" << endl;
+            cout << " rule 7"
+                 << " S -> aSb" << endl;
         }
 
         // Rule 8
@@ -143,31 +133,32 @@ int main()
 
             checkStates();
 
-            cout << " rule 8" << endl;
+            cout << " rule 8"
+                 << " S -> e" << endl;
         }
 
         else // No rules can be followed
         {
             cout << input << " is not in the language";
 
-            checkStates();
             return 0;
         }
     }
 
-    // rule 9
+    // check if (q$,e,e)
     if (s.empty())
     {
         cout << input << " is in the language" << endl;
     }
-    // rule 10
+    // otherwise go to rule 9 to check if state is (q$, e, S)
+    //  rule 9
     else if (s.top() == 'S')
     {
         s.pop();
 
         checkStates();
 
-        cout << " rule 10 " << endl;
+        cout << " rule 9 " << endl;
 
         if (s.empty())
         {
