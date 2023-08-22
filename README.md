@@ -1,9 +1,7 @@
 # Overview 
-A simple project that I really enjoyed doing. It was on schedule and it was collaborative with a peer who I liked working with. Nothin' better. 
-
-This is the semester project of Joseph Dunham and Joseph Howard for Theory Of Computation at Fordham University (CISC 4000) under Clavius Distinguished Professor Frank Hsu. 
-
 -----Implementation of a Deterministic Push-Down Automata-----
+
+This is the semester project of Joseph Dunham and Joseph Howard for Theory Of Computation at Fordham University (CISC 4000) under Clavius Distinguished Professor Frank Hsu. A simple project that I really enjoyed doing. It was on schedule and it was collaborative with a peer who I liked working with. Nothin' better. 
 
 Accepts strings in the language (a^n\*b^n$)
 
